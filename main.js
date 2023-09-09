@@ -83,9 +83,10 @@ if (!maxLimitReached()) {
 // Max Limit Reached
 function maxLimitReached() {
   loadDetails = localStorage.getItem("pageLoadCount");
+  if (!loadDetails) return false;
   const savedDetails = JSON.parse(loadDetails);
   if (
-    savedDetails.pageLoadCount > 4 &&
+    savedDetails.pageLoadCount > 1 &&
     new Date(savedDetails.date).toDateString() === new Date().toDateString()
   ) {
     return true;
