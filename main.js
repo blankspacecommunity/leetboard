@@ -3,7 +3,7 @@ let api_response = [];
 let tableHTML = "";
 
 fetch(
-  "https://script.google.com/macros/s/AKfycbyo47vQMpguOGN1y6NuIXsX0Wc-LCwGkQ1-Ay-DgYu2CU7PsLSE2GqjB78OFZXRqHlHGQ/exec"
+  "https://script.google.com/macros/s/AKfycbwNwVhQXjsohc0KyhZuqUapvNAZOupwVS3peWEVLkHyiYj_DpW4qhmKo2KleZzzomqb6Q/exec"
 )
   .then((response) => response.json())
   .then((data) => {
