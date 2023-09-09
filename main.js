@@ -52,3 +52,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// remove pageLoadCount
+// localStorage.removeItem("pageLoadCount");
+
+let loadDetails = localStorage.getItem("pageLoadCount");
+
+if (loadDetails) {
+  let counter = JSON.parse(loadDetails).pageLoadCount + 1;
+  localStorage.setItem(
+    "pageLoadCount",
+    JSON.stringify({ pageLoadCount: counter, date: new Date() })
+  );
+} else {
+  localStorage.setItem(
+    "pageLoadCount",
+    JSON.stringify({ pageLoadCount: 1, date: new Date() })
+  );
+}
+loadDetails = localStorage.getItem("pageLoadCount");
+const savedDetails = JSON.parse(loadDetails);
+
+if (
+  savedDetails.pageLoadCount > 4 &&
+  new Date(savedDetails.date).toDateString() === new Date().toDateString()
+) {
+  console.log("Max limit reached");
+}
