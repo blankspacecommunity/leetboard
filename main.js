@@ -66,6 +66,7 @@ if (!maxLimitReached()) {
           </tr>`;
       }
       document.getElementById("leaderboard-table").innerHTML = tableHTML;
+      localStorage.setItem("tableHTML", tableHTML);
     })
     .catch((error) => {
       console.log(error);
@@ -73,6 +74,10 @@ if (!maxLimitReached()) {
         "leaderboard-table"
       ).innerHTML = `<p>Something went wrong. Please try again later.</p>`;
     });
+} else {
+  console.log("Max limit reached");
+  document.getElementById("leaderboard-table").innerHTML =
+    localStorage.getItem("tableHTML");
 }
 
 // Max Limit Reached
