@@ -21,4 +21,34 @@ fetch(
     }
     document.getElementById("leaderboard-table").innerHTML = tableHTML;
   })
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    console.log(error);
+    document.getElementById(
+      "leaderboard-table"
+    ).innerHTML = `<p>Something went wrong. Please try again later.</p>`;
+  });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const shareButton = document.getElementById("shareButton");
+
+  shareButton.addEventListener("click", () => {
+    if (navigator.share) {
+      const shareData = {
+        title: "Beta-leetcoders Leaderboard",
+        text: "Check out the leaderboard for the beta-leetcoders!",
+        url: "https://blankspace-community.github.io/leetboard/",
+      };
+
+      navigator
+        .share(shareData)
+        .then(() => {
+          console.log("Shared successfully!");
+        })
+        .catch((error) => {
+          console.error("Error sharing:", error);
+        });
+    } else {
+      console.log("Share API not supported in this browser");
+    }
+  });
+});
