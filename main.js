@@ -35,15 +35,22 @@ document.addEventListener("DOMContentLoaded", () => {
 // Page Load Count
 if (loadDetails) {
   let counter = JSON.parse(loadDetails).pageLoadCount + 1;
+  // just update the counter and keep the date same.
+  let currentDate = JSON.parse(loadDetails).date;
   localStorage.setItem(
     "pageLoadCount",
-    JSON.stringify({ pageLoadCount: counter, date: new Date() })
+    JSON.stringify({
+      pageLoadCount: counter,
+      date: currentDate,
+    })
   );
+  console.log("local storage: ", localStorage.getItem("pageLoadCount"));
 } else {
   localStorage.setItem(
     "pageLoadCount",
     JSON.stringify({ pageLoadCount: 1, date: new Date() })
   );
+  console.log("local storage: ", localStorage.getItem("pageLoadCount"));
 }
 
 // Fetch API
